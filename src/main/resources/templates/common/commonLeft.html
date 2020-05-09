@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--左侧菜单-->
+<div class="left-side sticky-left-side" id="leftmenu">
+
+    <!--logo-->
+    <div class="logo">
+        <a href="index.html"><img src="../assets/images/logo.png" alt=""></a>
+    </div>
+
+    <div class="logo-icon text-center">
+        <a href="index.html"><img src="../assets/images/logo-icon.png" alt=""></a>
+    </div>
+    <!--logo-->
+
+    <div class="left-side-inner">
+        <!--Sidebar nav-->
+        <ul class="nav nav-pills nav-stacked custom-nav">
+            <li class="menu-list nav-active"><a href="/prePageView.do?viewpage=index.html"><i class="icon-home"></i> <span>菜单一</span></a>
+                <ul class="sub-menu-list">
+                    <li  class="active"><a href="/prePageView.do?viewpage=personal.html"> 节点一</a></li>
+                    <li><a href="#"> 节点二</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-list"><a href="#"><i class="icon-layers"></i> <span>菜单二</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="ui-buttons.html"> Buttons</a></li>
+                    <li><a href="ui-panels.html"> Panels</a></li>
+                    <li><a href="ui-sweet-alert.html">Sweet alert</a></li>
+                    <li><a href="ui-progressbar.html">Progressbar</a></li>
+                    <li><a href="ui-alert-notification.html">Alert &amp; notification</a></li>
+                    <li><a href="ui-checkbox-radio.html">Checkbox-radios</a></li>
+                    <li><a href="ui-range-slider.html">Range slider</a></li>
+                    <li><a href="ui-modals-tooltip.html">Modals Tooltip</a></li>
+                    <li><a href="typography.html">Typography</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-list"><a href="#"><i class="icon-grid"></i> <span>Tables</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="table-static.html"> Basic Table</a></li>
+                    <li><a href="table-responsive.html">Responsive Table</a></li>
+                    <li><a href="table-datatable.html">Data Tables</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-list"><a href="#"><i class="icon-envelope-open"></i> <span>Mail</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="inbox.html"> Inbox</a></li>
+                    <li><a href="compose.html"> Compose Mail</a></li>
+                    <li><a href="message-view.html"> View Mail</a></li>
+                </ul>
+            </li>
+
+            <li class="menu-list"><a href="#"><i class="icon-loop"></i> <span>Forms</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="form-basic.html"> Form Layouts</a></li>
+                    <li><a href="form-element.html"> Form Components</a></li>
+                    <li><a href="form-wizard.html"> Form Wizards</a></li>
+                    <li><a href="form-pickers.html"> Form Pickers</a></li>
+                    <li><a href="form-validation.html"> Form Validation</a></li>
+                    <li><a href="image-crop.html">Image Crop</a></li>
+                    <li><a href="form-xeditable.html">X-editable</a></li>
+                    <li><a href="form-editors.html">Editors</a></li>
+                    <li><a href="form-upload.html">File Dropzone</a></li>
+                </ul>
+            </li>
+
+
+            <li class="menu-list"><a href="#"><i class="icon-film"></i> <span>Icons</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="icon-font-awesome.html"> Fontawesome</a></li>
+                    <li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>
+                    <li><a href="icon-themify.html">Themify Icons</a></li>
+                    <li><a href="icon-material-design.html">Material Design Icons</a></li>
+                    <li><a href="icon-ion.html">Ions Icon </a></li>
+                </ul>
+            </li>
+
+
+            <li><a href="calendar.html"><i class="icon-note"></i> <span>Calendar</span></a></li>
+            <li><a href="widget.html"><i class="icon-wrench"></i> <span>Widget</span></a></li>
+
+            <li class="menu-list"><a href="#"><i class="icon-pie-chart"></i> <span>Charts</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="flot-chart.html"> Flot Charts</a></li>
+                    <li><a href="morris-chart.html"> Morris Charts</a></li>
+                    <li><a href="chart-js.html"> Chartjs</a></li>
+                    <li><a href="chart-sparkline.html"> Chart Sparkline</a></li>
+                </ul>
+            </li>
+            <li class="menu-list"><a href="#"><i class="icon-location-pin"></i> <span>Maps</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="google-map.html"> Google Map</a></li>
+                    <li><a href="vector-map.html"> Vector Map</a></li>
+                </ul>
+            </li>
+            <li class="menu-list"><a href="#"><i class="icon-folder"></i> <span>Extra Pages</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="faq.html"> FAQ</a></li>
+                    <li><a href="profile.html"> Profile</a></li>
+                    <li><a href="invoice.html"> Invoice</a></li>
+                    <li><a href="timeline.html"> Timeline</a></li>
+                    <li><a href="email-template.html"> Email Template</a></li>
+                    <li><a href="pricing-table.html"> Pricing Table</a></li>
+                    <li><a href="search-result.html"> Search Result</a></li>
+                    <li><a href="error-400.html"> 400 Error</a></li>
+                    <li><a href="error-403.html"> 403 Error</a></li>
+                    <li><a href="error-404.html"> 404 Error</a></li>
+                    <li><a href="error-500.html"> 500 Error</a></li>
+                    <li><a href="error-503.html"> 503 Error</a></li>
+                </ul>
+            </li>
+            <li class="menu-list"><a href="#"><i class="icon-lock"></i> <span>Login</span></a>
+                <ul class="sub-menu-list">
+                    <li><a href="login.html"> Login </a></li>
+                    <li><a href="forgot-password.html"> Forgot Password </a></li>
+                    <li><a href="registration.html"> Registration </a></li>
+                    <li><a href="locked.html"> Lockscreen </a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <!--End sidebar nav-->
+
+    </div>
+</div>
+<!--End left side menu-->
+
+
+
+<!-- 右侧上半部分展示信息-->
+<div class="header-section" id="RightTop">
+
+    <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+    <form class="searchform">
+        <input type="text" class="form-control" name="keyword" placeholder="在次输入信息查询.." />
+    </form>
+
+    <!--notification menu start -->
+    <div class="menu-right">
+        <ul class="notification-menu">
+            <li>
+                <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                    <i class="fa fa-tasks"></i>
+                    <span class="badge">8</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-head pull-right">
+                    <h5 class="title">你有18条未读信息</h5>
+                    <ul class="dropdown-list">
+                        <li class="notification-scroll-list notification-list ">
+                            <!-- list item-->
+                            <a href="javascript:void(0);" class="list-group-item">
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <em class="fa  fa-shopping-cart noti-primary"></em>
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">工作</h5>
+                                        <p class="m-0">
+                                            <small>29 分钟前</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- list item-->
+                            <a href="javascript:void(0);" class="list-group-item">
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <em class="fa fa-check noti-success"></em>
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">QQ</h5>
+                                        <p class="m-0">
+                                            <small>12 分钟前</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- list item-->
+                            <a href="javascript:void(0);" class="list-group-item">
+                                <div class="media">
+                                    <div class="pull-left p-r-10">
+                                        <em class="fa fa-user-plus noti-info"></em>
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">娱乐</h5>
+                                        <p class="m-0">
+                                            <small>17 分钟前</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </li>
+                        <li class="last"> <a href="#">点此查看更多信息...</a> </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                    <i class="fa fa-bell-o"></i>
+                    <span class="badge">4</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-head pull-right">
+                    <h5 class="title">待回复信息</h5>
+                    <ul class="dropdown-list normal-list">
+                        <li class="message-list message-scroll-list">
+                            <a href="#">
+                                <span class="photo"> <img src="../assets/images/users/avatar-8.jpg" class="img-circle" alt="img"></span>
+                                <span class="subject">张三</span>
+                                <span class="message"> 你好啊！</span>
+                                <span class="time">15 分钟前</span>
+                            </a>
+
+                            <a href="#">
+                                <span class="photo"> <img src="../assets/images/users/avatar-7.jpg" class="img-circle" alt="img"></span>
+                                <span class="subject">李四</span>
+                                <span class="message"> 你吃了吗？</span>
+                                <span class="time">10 分钟前</span>
+                            </a>
+
+                            <a href="#">
+                                <span class="photo"> <img src="../assets/images/users/avatar-6.jpg" class="img-circle" alt="img"></span>
+                                <span class="subject">王五</span>
+                                <span class="message"> 你从哪里来？</span>
+                                <span class="time">20 分钟前</span>
+                            </a>
+
+                            <a href="#">
+                                <span class="photo"> <img src="../assets/images/users/avatar-6.jpg" class="img-circle" alt="img"></span>
+                                <span class="subject">赵六</span>
+                                <span class="message"> 你到哪里去？</span>
+                                <span class="time">20 分钟前</span>
+                            </a>
+
+
+                        </li>
+                        <li class="last"> <a  href="#">更多待回复信息</a> </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <img src="../assets/images/users/avatar-6.jpg" alt="" />
+                    张三
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                    <li> <a href="#"> <i class="fa fa-wrench"></i> 设置 </a> </li>
+                    <li> <a href="#"> <i class="fa fa-user"></i> 个人中心 </a> </li>
+                    <li> <a href="#"> <i class="fa fa-info"></i> 帮助 </a> </li>
+                    <li> <a href="#"> <i class="fa fa-lock"></i> 退出 </a> </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <!--notification menu end -->
+
+</div>
+<!-- header section end-->
+
+
+
+<!--底部显示 -->
+<footer class="footer-main" id="footerUp">Copyright &copy; 2020.Company ABCDd.<a target="_blank" href="#">联系我们</a></footer>
+<!--End footer -->
+</body>
+</html>

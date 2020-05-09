@@ -18,7 +18,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         if (loginname == null) {
             //未登陆，返回登陆页面
             request.setAttribute("mes", "没有权限请先登陆");
-            request.getRequestDispatcher("/index.html").forward(request, response);
+            request.getRequestDispatcher("/login.html").forward(request, response);
             return false;
         } else {
             //登录

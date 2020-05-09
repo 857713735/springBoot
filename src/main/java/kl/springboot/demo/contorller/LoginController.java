@@ -1,27 +1,117 @@
 package kl.springboot.demo.contorller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sun.deploy.net.HttpResponse;
+import kl.springboot.demo.dao.SysuserMapper;
+import kl.springboot.demo.entity.Sysuser;
+import kl.springboot.demo.entity.SysuserExample;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class LoginController {
 
-    //跳转列表并跳转首页
-    @PostMapping("/Login.do")
+    /**
+     * 验证登录
+     * @param username
+     * @param password
+     * @param map
+     * @param session
+     * @return
+     */
+    @Autowired
+    SysuserMapper sysUserMapper;
+    @RequestMapping("/Login.do")
     public String userlist(@RequestParam("username") String username, @RequestParam("password") String password, Map<String, Object> map, HttpSession session) {
-        if ("admin".equals(username) && "123456".equals(password)) {
-            session.setAttribute("loginName", username);
-            return "redirect:/main.html";
 
+        SysuserExample example=new SysuserExample();
+        SysuserExample.Criteria criteria = example.createCriteria();
+        /**
+         *  criteria如果定义一个的话执行效果为：
+         *  select * from xx  where a=x and b=x
+         *  如定义多个执行效果为
+         *  select * from xx  where a=x or b=x
+         */
+        /**
+         * 示例语法
+         * setOrderByClause("age asc");//升序
+         * setDistinct(false);//不去重
+         */
+        if(StringUtils.isNotBlank(username)){
+            criteria.andLoginNameEqualTo(username);
+        }
+        if(StringUtils.isNotBlank(password)){
+            criteria.andPasswordEqualTo(password);
+        }
+        List<Sysuser> collection = sysUserMapper.selectByExample(example);
+        if (collection.size()==1) {
+            session.setAttribute("loginName", username);
+          //  return "index";//首页
+            return "redirect:/index.do";
         } else {
             map.put("mes", "账号或密码错误!");
-            return "index";
+            return "login";//登录
         }
 
     }
+
+    /**
+     * 退出系统
+     */
+    @RequestMapping("/LoginOut.do")
+    public String LoginOut( HttpSession session) {
+            session.setAttribute("loginName", "");
+            return "login";//登录
+    }
+    /**
+     * 跳转首页
+     * @return
+     */
+    @RequestMapping("/index.do")
+    public String toindex() {
+        return "index";
+    }
+
+    /**
+     * 通用页面跳转
+     * @param request
+     * @param map
+     * @return
+     */
+    @RequestMapping("/prePageView.do")
+    public String prePageView(HttpServletRequest request, ModelMap map){
+        //SysUsers user = (SysUsers) ShiroUtils.getToken();
+       // map.put("userid", user.getUserid());
+       // map.put("companyid", user.getCompanyid());
+       // map.put("companyname", user.getCompanyname());
+      //  map.addAllAttributes(CommonUtil.getParameterMap(request));
+        String url=request.getParameter("viewpage");
+        String viewpage ="";
+        if(StringUtils.isNotBlank(url)){
+            StringBuffer urlbuf = new StringBuffer(url.replace("\\","/"));
+            if(urlbuf.toString().startsWith("/")){
+                //删除首字符
+                urlbuf.deleteCharAt(0);
+            }
+            if(urlbuf.toString().endsWith(".html")){
+                urlbuf.delete(urlbuf.length()-5,urlbuf.length());
+            }
+            viewpage= urlbuf.toString();
+        }else{
+            viewpage= "";
+        }
+        return viewpage;
+    }
+
 }
