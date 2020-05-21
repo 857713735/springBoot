@@ -1,0 +1,22 @@
+package kl.springboot.demo.component;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+
+/**
+ * @author Dazhi
+ * @date 2019/4/25 20:40
+ */
+@Component
+public class WebSocketConfig {
+
+    /**
+     * 注入ServerEndpointExporter
+     */
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter(){
+        return new ServerEndpointExporter();
+    }
+
+}

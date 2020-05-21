@@ -11,7 +11,6 @@ import kl.springboot.demo.utils.JsonUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,7 +53,7 @@ public class SysUserController {
         }
         PageHelper.startPage(page, size);
         SysuserExample example=new SysuserExample();
-        example.setOrderByClause("login_name asc");
+        example.setOrderByClause("login_name asc");//根据loginname排序
         List<Sysuser> collection = sysUserMapper.selectByExample(example);
 
 

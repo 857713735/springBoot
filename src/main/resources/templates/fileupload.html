@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/title.ico" type="image/png">
+    <title>Home</title>
+
+    <!--Begin  Page Level  CSS -->
+    <link href="../assets/plugins/morris-chart/morris.css" rel="stylesheet">
+    <link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <!--End  Page Level  CSS -->
+    <link href="../assets/css/icons.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+
+
+</head>
+
+<body class="sticky-header">
+
+<!--引入抽取的左侧页面-->
+<div th:replace="common/commonLeft::#leftmenu"></div>
+
+
+<!-- main content start-->
+<div class="main-content" >
+
+    <!--引入抽取的右侧上部页面-->
+    <div th:replace="common/commonLeft::#RightTop"></div>
+
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+
+
+        文件上传
+
+
+    </div>
+    <!-- End Wrapper-->
+
+    <!--引入抽取的右侧底部页面-->
+    <footer th:replace="common/commonLeft::#footerUp"></footer>
+
+
+</div>
+<!--End main content -->
+
+
+
+<!--Begin core plugin -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/plugins/moment/moment.js"></script>
+<script  src="../assets/js/jquery.slimscroll.js "></script>
+<script src="../assets/js/jquery.nicescroll.js"></script>
+<script src="../assets/js/functions.js"></script>
+<!-- End core plugin -->
+
+<!--Begin Page Level Plugin-->
+<script src="assets/plugins/morris-chart/morris.js"></script>
+<script src="../assets/plugins/morris-chart/raphael-min.js"></script>
+<script src="../assets/pages/dashboard.js"></script>
+<!--End Page Level Plugin-->
+
+
+</body>
+
+</html>

@@ -1,9 +1,6 @@
 package kl.springboot.demo.contorller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.sun.deploy.net.HttpResponse;
+
 import kl.springboot.demo.dao.SysuserMapper;
 import kl.springboot.demo.entity.Sysuser;
 import kl.springboot.demo.entity.SysuserExample;

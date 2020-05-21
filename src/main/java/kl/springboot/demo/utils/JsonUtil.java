@@ -7,7 +7,6 @@ public class JsonUtil implements Serializable {
     private String status;
     private String message;
     private Object rows;
-    private int total;
 
     public JsonUtil() {
     }
@@ -37,7 +36,6 @@ public class JsonUtil implements Serializable {
         this.status = status;
         this.message = message;
         setRows(rows);
-        this.total=50;
     }
 
     public Object getRows() {
@@ -57,11 +55,4 @@ public class JsonUtil implements Serializable {
         }
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 }

@@ -1,6 +1,6 @@
 package kl.springboot.demo.component;
 
-import kl.springboot.demo.utils.internationalization;
+import kl.springboot.demo.utils.Internationalization;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -38,7 +38,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
      */
     @Bean
     public LocaleResolver localeResolver() {
-        return new internationalization();
+        return new Internationalization();
     }
 
 

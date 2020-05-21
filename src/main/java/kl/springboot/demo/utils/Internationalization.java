@@ -10,7 +10,7 @@ import java.util.Locale;
 /**
  * 国际化
  */
-public class internationalization implements LocaleResolver {
+public class Internationalization implements LocaleResolver {
     /**
      * 解析
      *

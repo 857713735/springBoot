@@ -36,8 +36,23 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
+    #Redis
+  redis:
+    #Redis服务器连接端口
+    host: localhost
+    # Redis数据库索引（默认为0）
+    database: 0
+    #Redis服务器连接密码（默认为空）
+    #password: redispassword
+    # Redis服务器连接端口
+    port: 6379
+    timeout:
+      # 连接超时时间（毫秒）
+      seconds: 5
 mybatis:
+  #指定xml文件存放位置
   mapper-locations: classpath:MybatisMapper/mapper/*.xml
+  #指定mybatis配置文件存放位置
   config-location: classpath:MybatisMapper/mybatis-config.xml
 #pagehelper分页插件配置
 pagehelper:

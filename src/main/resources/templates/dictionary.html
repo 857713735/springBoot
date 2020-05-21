@@ -1,82 +1,227 @@
 <!DOCTYPE html>
-<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8"/>
+    <title>聊天室</title>
+    <link rel="stylesheet" type="text/css" href="css/easyui.css">
 
-    <title>Dashboard Template for Bootstrap</title>
-    <link href="#" th:href="@{/img/title.ico}" type="image/x-icon" rel="icon">
-    <!-- Bootstrap core CSS -->
-    <link href="" th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="#" th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
     <style type="text/css">
-        /* Chart.js */
-
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
+        * {
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
         }
 
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
+        #chatRecord {
+            position: relative;
+            margin: 20px auto;
+            border: 1px solid steelblue;
+            width: 600px;
+            height: 500px;
         }
 
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        .msgContent {
+            width: auto;
+            max-width: 250px;
+            height: auto;
+            word-break: break-all;
+            margin: 5px;
+            padding: 3px;
+            border-radius: 5px;
         }
+
+        #chatZone .left {
+            list-style: none;
+            text-align: left;
+        }
+
+        #chatZone .left .p {
+            float: left;
+            text-align: left;
+            background-color: lightgrey;
+            font-size: 4ex;
+
+        }
+
+        #chatZone .left .title {
+            text-align: left;
+            font-size: 5px;
+            color: grey;
+        }
+
+        #chatZone .right {
+            float: right;
+            list-style: none;
+            text-align: right;
+        }
+
+        #chatZone .right .title {
+            text-align: right;
+            font-size: 5px;
+            color: grey;
+            clear: both;
+        }
+
+        #chatZone .right .p {
+            float: right;
+            text-align: right;
+            background-color: yellowgreen;
+            font-size: 4ex;
+
+        }
+
+
     </style>
 </head>
-
 <body>
-<!--引入抽取的页面-->
-<div th:replace="common/commonHtml::topbar"></div>
+<p>
+    帐号：<input type="text" id="linkAgent" class="easyui-textbox" style="width: 150px"/>
+    昵称：<input type="text" id="nickname" class="easyui-textbox" style="width: 150px"/>
+    发送给：<input type="text" id="toAgent" class="easyui-textbox" style="width: 150px"/>
+    <a id="btnLink" href="javascript:void(0)" class="easyui-linkbutton c1">开始聊天</a></p>
+<div data-options="region:'center'" class="easyui-panel" style="width: 90%;height:500px;  padding: 10px;"
+     id="chatRecord">
+    <ul class="chatDialog-main clearfix" id="chatZone">
 
-<div class="container-fluid">
-    <div class="row">
-        <!--引入左侧边-->
-        <div th:replace="common/commonHtml::#sidebar(activeUri='dictionary')"></div>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-           数据字典
-        </main>
-    </div>
+    </ul>
+</div>
+<div class="easyui-panel" style="width: 90%; padding: 10px;">
+    <table height="100%" cellpadding="0px" cellspacing="0px">
+        <tr>
+            <td height="100px">
+                <table cellpadding="5px" cellspacing="0" border="0">
+                    <tr style="vertical-align: middle;">
+                        <td><textarea
+                                style="width: 600px; height: 50px; overflow: auto; vertical-align: middle;"
+                                id="txtMessage" name="txtMessage"></textarea>
+                        </td>
+                        <td style="width: 6px"></td>
+                        <td style="vertical-align: middle;">
+                            <a id="btnSend" href="javascript:void(0)"
+                               class="easyui-linkbutton c3" data-options="size:'large'">发送</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
-<script type="text/javascript" src="" th:src="@{/js/popper.min.js}"></script>
-<script type="text/javascript" src="" th:src="@{/js/bootstrap.min.js}"></script>
-
-<!-- Icons -->
-<script type="text/javascript" src="" th:src="@{/js/feather.min.js}"></script>
-<script>
-    feather.replace()
-</script>
-
-<!-- Graphs -->
-<script type="text/javascript" src="" th:src="@{/js/Chart.min.js}"></script>
-<script>
-
-</script>
-
 </body>
+<script type="text/javascript">
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        if (hours >= 0 && hours <= 9) {
+            hours = "0" + hours;
+        }
+        if (minutes >= 0 && minutes <= 9) {
+            minutes = "0" + minutes;
+        }
+        if (seconds >= 0 && seconds <= 9) {
+            seconds = "0" + seconds;
+        }
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + hours + seperator2 + minutes
+            + seperator2 + seconds;
+        return currentdate;
+    }
 
+    $(function () {
+        var websocket;
+        var nickname;
+        $(window).keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#btnSend").click();
+                return true;
+            }
+        });
+        $("#btnSend").click(function () {
+            var producerId = $("#linkAgent").val();
+            var msg = $("#txtMessage").val();
+            var consumerId = $("#toAgent").val();
+            var obj = new Object();
+            obj.producerId = producerId;
+            obj.message = msg;
+            obj.consumerId = consumerId;
+            obj.nickname = nickname;
+            var json = JSON.stringify(obj);
+            var result = websocket.send(json);
+            var message = "<li class='msgContent right'>" +
+                "<p class='msgContent right title'>" + nickname + " (" + getNowFormatDate() + "):</p>" +
+                "<p class='msgContent right p'>" + msg + "</p></li>" +
+                "<div style='clear:both'></div>";
+            $("#chatZone").append(message);
+            $("#txtMessage").val("");
+
+        });
+
+        $("#btnLink").click(function () {
+            var agent = $("#linkAgent").val();
+            nickname = $("#nickname").val();
+            if ('WebSocket' in window) {
+
+            } else {
+                alert("您的浏览器版本太低，请升级浏览器版本！");
+                return;
+            }
+            if ('WebSocket' in window) {
+                var wsUrl = "ws://" +  "localhost:8080/websocket/";
+
+                websocket = new WebSocket(wsUrl + agent);
+
+
+                //连接发生错误的回调方法
+                websocket.onerror = function () {
+                    console.log(" websocket.onerror :error");
+                };
+
+                //连接成功建立的回调方法
+                websocket.onopen = function (event) {
+
+                }
+
+                //接收到消息的回调方法
+                websocket.onmessage = function (event) {
+                    msg = eval('(' + event.data + ')');
+                    if (msg.productorId != agent) {
+                        var message = "<li class='msgContent left'>" +
+                            "<p class='msgContent left title'>" + msg.nickname + " (" + getNowFormatDate() + "):</p>" +
+                            "<p class='msgContent left p'>" + msg.message + "</p></li>" +
+                            "<div style='clear:both'></div>";
+                        $("#chatZone").append(message);
+                    }
+
+                }
+
+                //连接关闭的回调方法
+                websocket.onclose = function () {
+                    console.log(" websocket.onclose :close");
+                    websocket = new WebSocket(wsUrl + agent);
+                }
+
+                //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+                window.onbeforeunload = function () {
+                    websocket.close();
+                }
+            }
+        });
+
+    });
+</script>
 </html>

@@ -1,8 +1,9 @@
 package kl.springboot.demo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Sysuser {
+public class Sysuser implements Serializable {
     private Long userId;
 
     private String loginName;
