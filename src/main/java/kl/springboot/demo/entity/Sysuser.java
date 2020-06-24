@@ -1,16 +1,15 @@
 package kl.springboot.demo.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Sysuser implements Serializable {
-    private Long userId;
+public class Sysuser {
+    private String userid;
 
-    private String loginName;
+    private String loginname;
 
-    private String userName;
+    private String username;
 
-    private String userType;
+    private String usertype;
 
     private String email;
 
@@ -24,50 +23,50 @@ public class Sysuser implements Serializable {
 
     private String status;
 
-    private String loginIp;
+    private String loginip;
 
-    private Date loginDate;
+    private Date logindate;
 
-    private String createBy;
+    private String createby;
 
-    private Date createTime;
+    private Date createtime;
 
-    private String updateBy;
+    private String updateby;
 
-    private Date updateTime;
+    private Date updatetime;
 
     private String remark;
 
-    public Long getUserId() {
-        return userId;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getLoginname() {
+        return loginname;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName == null ? null : loginName.trim();
+    public void setLoginname(String loginname) {
+        this.loginname = loginname == null ? null : loginname.trim();
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getUserType() {
-        return userType;
+    public String getUsertype() {
+        return usertype;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType == null ? null : userType.trim();
+    public void setUsertype(String usertype) {
+        this.usertype = usertype == null ? null : usertype.trim();
     }
 
     public String getEmail() {
@@ -118,52 +117,52 @@ public class Sysuser implements Serializable {
         this.status = status == null ? null : status.trim();
     }
 
-    public String getLoginIp() {
-        return loginIp;
+    public String getLoginip() {
+        return loginip;
     }
 
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp == null ? null : loginIp.trim();
+    public void setLoginip(String loginip) {
+        this.loginip = loginip == null ? null : loginip.trim();
     }
 
-    public Date getLoginDate() {
-        return loginDate;
+    public Date getLogindate() {
+        return logindate;
     }
 
-    public void setLoginDate(Date loginDate) {
-        this.loginDate = loginDate;
+    public void setLogindate(Date logindate) {
+        this.logindate = logindate;
     }
 
-    public String getCreateBy() {
-        return createBy;
+    public String getCreateby() {
+        return createby;
     }
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
+    public void setCreateby(String createby) {
+        this.createby = createby == null ? null : createby.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
-    public String getUpdateBy() {
-        return updateBy;
+    public String getUpdateby() {
+        return updateby;
     }
 
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy == null ? null : updateBy.trim();
+    public void setUpdateby(String updateby) {
+        this.updateby = updateby == null ? null : updateby.trim();
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getUpdatetime() {
+        return updatetime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public String getRemark() {

@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kl.springboot.demo.dao.SysuserMapper" >
   <resultMap id="BaseResultMap" type="kl.springboot.demo.entity.Sysuser" >
-    <id column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="loginName" property="loginname" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userType" property="usertype" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="imageurl" property="imageurl" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="CHAR" />
-    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
-    <result column="login_date" property="loginDate" jdbcType="TIMESTAMP" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="loginIp" property="loginip" jdbcType="VARCHAR" />
+    <result column="loginDate" property="logindate" jdbcType="DATE" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="DATE" />
+    <result column="updateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="DATE" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -79,10 +79,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, login_name, user_name, user_type, email, phonenumber, sex, imageurl, password, 
-    status, login_ip, login_date, create_by, create_time, update_by, update_time, remark
+    userId, loginName, userName, userType, email, phonenumber, sex, imageurl, password, 
+    status, loginIp, loginDate, createBy, createTime, updateBy, updateTime, remark
   </sql>
-<!--  查询全部用户-->
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="kl.springboot.demo.entity.SysuserExample" >
     select
     <if test="distinct" >
@@ -97,15 +96,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from sysuser
-    where user_id = #{userId,jdbcType=BIGINT}
+    where userId = #{userid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from sysuser
-    where user_id = #{userId,jdbcType=BIGINT}
+    where userId = #{userid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="kl.springboot.demo.entity.SysuserExample" >
     delete from sysuser
@@ -114,33 +113,33 @@
     </if>
   </delete>
   <insert id="insert" parameterType="kl.springboot.demo.entity.Sysuser" >
-    insert into sysuser (user_id, login_name, user_name, 
-      user_type, email, phonenumber, 
+    insert into sysuser (userId, loginName, userName, 
+      userType, email, phonenumber, 
       sex, imageurl, password, 
-      status, login_ip, login_date, 
-      create_by, create_time, update_by, 
-      update_time, remark)
-    values (#{userId,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{userType,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=CHAR}, #{imageurl,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{status,jdbcType=CHAR}, #{loginIp,jdbcType=VARCHAR}, #{loginDate,jdbcType=TIMESTAMP}, 
-      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+      status, loginIp, loginDate, 
+      createBy, createTime, updateBy, 
+      updateTime, remark)
+    values (#{userid,jdbcType=VARCHAR}, #{loginname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{usertype,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{imageurl,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{loginip,jdbcType=VARCHAR}, #{logindate,jdbcType=DATE}, 
+      #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="kl.springboot.demo.entity.Sysuser" >
     insert into sysuser
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        user_id,
+      <if test="userid != null" >
+        userId,
       </if>
-      <if test="loginName != null" >
-        login_name,
+      <if test="loginname != null" >
+        loginName,
       </if>
-      <if test="userName != null" >
-        user_name,
+      <if test="username != null" >
+        userName,
       </if>
-      <if test="userType != null" >
-        user_type,
+      <if test="usertype != null" >
+        userType,
       </if>
       <if test="email != null" >
         email,
@@ -160,40 +159,40 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="loginIp != null" >
-        login_ip,
+      <if test="loginip != null" >
+        loginIp,
       </if>
-      <if test="loginDate != null" >
-        login_date,
+      <if test="logindate != null" >
+        loginDate,
       </if>
-      <if test="createBy != null" >
-        create_by,
+      <if test="createby != null" >
+        createBy,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateBy != null" >
-        update_by,
+      <if test="updateby != null" >
+        updateBy,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
       <if test="remark != null" >
         remark,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="loginName != null" >
-        #{loginName,jdbcType=VARCHAR},
+      <if test="loginname != null" >
+        #{loginname,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
-      <if test="userType != null" >
-        #{userType,jdbcType=VARCHAR},
+      <if test="usertype != null" >
+        #{usertype,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -202,7 +201,7 @@
         #{phonenumber,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        #{sex,jdbcType=CHAR},
+        #{sex,jdbcType=VARCHAR},
       </if>
       <if test="imageurl != null" >
         #{imageurl,jdbcType=VARCHAR},
@@ -211,25 +210,25 @@
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=CHAR},
+        #{status,jdbcType=VARCHAR},
       </if>
-      <if test="loginIp != null" >
-        #{loginIp,jdbcType=VARCHAR},
+      <if test="loginip != null" >
+        #{loginip,jdbcType=VARCHAR},
       </if>
-      <if test="loginDate != null" >
-        #{loginDate,jdbcType=TIMESTAMP},
+      <if test="logindate != null" >
+        #{logindate,jdbcType=DATE},
       </if>
-      <if test="createBy != null" >
-        #{createBy,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
       </if>
-      <if test="updateBy != null" >
-        #{updateBy,jdbcType=VARCHAR},
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -245,17 +244,17 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update sysuser
     <set >
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginName != null" >
-        login_name = #{record.loginName,jdbcType=VARCHAR},
+      <if test="record.loginname != null" >
+        loginName = #{record.loginname,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.userType != null" >
-        user_type = #{record.userType,jdbcType=VARCHAR},
+      <if test="record.usertype != null" >
+        userType = #{record.usertype,jdbcType=VARCHAR},
       </if>
       <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
@@ -264,7 +263,7 @@
         phonenumber = #{record.phonenumber,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=CHAR},
+        sex = #{record.sex,jdbcType=VARCHAR},
       </if>
       <if test="record.imageurl != null" >
         imageurl = #{record.imageurl,jdbcType=VARCHAR},
@@ -273,25 +272,25 @@
         password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=CHAR},
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginIp != null" >
-        login_ip = #{record.loginIp,jdbcType=VARCHAR},
+      <if test="record.loginip != null" >
+        loginIp = #{record.loginip,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginDate != null" >
-        login_date = #{record.loginDate,jdbcType=TIMESTAMP},
+      <if test="record.logindate != null" >
+        loginDate = #{record.logindate,jdbcType=DATE},
       </if>
-      <if test="record.createBy != null" >
-        create_by = #{record.createBy,jdbcType=VARCHAR},
+      <if test="record.createby != null" >
+        createBy = #{record.createby,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null" >
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=DATE},
       </if>
-      <if test="record.updateBy != null" >
-        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      <if test="record.updateby != null" >
+        updateBy = #{record.updateby,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateTime != null" >
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      <if test="record.updatetime != null" >
+        updateTime = #{record.updatetime,jdbcType=DATE},
       </if>
       <if test="record.remark != null" >
         remark = #{record.remark,jdbcType=VARCHAR},
@@ -303,22 +302,22 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update sysuser
-    set user_id = #{record.userId,jdbcType=BIGINT},
-      login_name = #{record.loginName,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_type = #{record.userType,jdbcType=VARCHAR},
+    set userId = #{record.userid,jdbcType=VARCHAR},
+      loginName = #{record.loginname,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      userType = #{record.usertype,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       phonenumber = #{record.phonenumber,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=CHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
       imageurl = #{record.imageurl,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=CHAR},
-      login_ip = #{record.loginIp,jdbcType=VARCHAR},
-      login_date = #{record.loginDate,jdbcType=TIMESTAMP},
-      create_by = #{record.createBy,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_by = #{record.updateBy,jdbcType=VARCHAR},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR},
+      loginIp = #{record.loginip,jdbcType=VARCHAR},
+      loginDate = #{record.logindate,jdbcType=DATE},
+      createBy = #{record.createby,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=DATE},
+      updateBy = #{record.updateby,jdbcType=VARCHAR},
+      updateTime = #{record.updatetime,jdbcType=DATE},
       remark = #{record.remark,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -327,14 +326,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="kl.springboot.demo.entity.Sysuser" >
     update sysuser
     <set >
-      <if test="loginName != null" >
-        login_name = #{loginName,jdbcType=VARCHAR},
+      <if test="loginname != null" >
+        loginName = #{loginname,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="userType != null" >
-        user_type = #{userType,jdbcType=VARCHAR},
+      <if test="usertype != null" >
+        userType = #{usertype,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -343,7 +342,7 @@
         phonenumber = #{phonenumber,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        sex = #{sex,jdbcType=CHAR},
+        sex = #{sex,jdbcType=VARCHAR},
       </if>
       <if test="imageurl != null" >
         imageurl = #{imageurl,jdbcType=VARCHAR},
@@ -352,50 +351,50 @@
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=CHAR},
+        status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="loginIp != null" >
-        login_ip = #{loginIp,jdbcType=VARCHAR},
+      <if test="loginip != null" >
+        loginIp = #{loginip,jdbcType=VARCHAR},
       </if>
-      <if test="loginDate != null" >
-        login_date = #{loginDate,jdbcType=TIMESTAMP},
+      <if test="logindate != null" >
+        loginDate = #{logindate,jdbcType=DATE},
       </if>
-      <if test="createBy != null" >
-        create_by = #{createBy,jdbcType=VARCHAR},
+      <if test="createby != null" >
+        createBy = #{createby,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=DATE},
       </if>
-      <if test="updateBy != null" >
-        update_by = #{updateBy,jdbcType=VARCHAR},
+      <if test="updateby != null" >
+        updateBy = #{updateby,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=DATE},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=BIGINT}
+    where userId = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="kl.springboot.demo.entity.Sysuser" >
     update sysuser
-    set login_name = #{loginName,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
-      user_type = #{userType,jdbcType=VARCHAR},
+    set loginName = #{loginname,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      userType = #{usertype,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       phonenumber = #{phonenumber,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=CHAR},
+      sex = #{sex,jdbcType=VARCHAR},
       imageurl = #{imageurl,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      status = #{status,jdbcType=CHAR},
-      login_ip = #{loginIp,jdbcType=VARCHAR},
-      login_date = #{loginDate,jdbcType=TIMESTAMP},
-      create_by = #{createBy,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_by = #{updateBy,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      loginIp = #{loginip,jdbcType=VARCHAR},
+      loginDate = #{logindate,jdbcType=DATE},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=DATE},
+      updateBy = #{updateby,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=DATE},
       remark = #{remark,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=BIGINT}
+    where userId = #{userid,jdbcType=VARCHAR}
   </update>
 </mapper>

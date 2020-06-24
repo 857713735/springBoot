@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>聊天室</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/title.ico" type="image/png">
+    <title>Home</title>
+
+    <!--Begin  Page Level  CSS -->
+    <link href="../assets/plugins/morris-chart/morris.css" rel="stylesheet">
+    <link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <!--End  Page Level  CSS -->
+    <link href="../assets/css/icons.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+
+
     <link rel="stylesheet" type="text/css" href="css/easyui.css">
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+
     <style type="text/css">
         * {
             font-size: 14px;
@@ -75,39 +93,55 @@
 
     </style>
 </head>
-<body>
-<p>
-    帐号：<input type="text" id="linkAgent" class="easyui-textbox" style="width: 150px"/>
-    昵称：<input type="text" id="nickname" class="easyui-textbox" style="width: 150px"/>
-    发送给：<input type="text" id="toAgent" class="easyui-textbox" style="width: 150px"/>
-    <a id="btnLink" href="javascript:void(0)" class="easyui-linkbutton c1">开始聊天</a></p>
-<div data-options="region:'center'" class="easyui-panel" style="width: 90%;height:500px;  padding: 10px;"
-     id="chatRecord">
-    <ul class="chatDialog-main clearfix" id="chatZone">
+<body class="sticky-header">
+<!--聊天功能-->
+<!--引入抽取的左侧页面-->
+<div th:replace="common/commonLeft::#leftmenu"></div>
 
 
-    </ul>
-</div>
-<div class="easyui-panel" style="width: 90%; padding: 10px;">
-    <table height="100%" cellpadding="0px" cellspacing="0px">
-        <tr>
-            <td height="100px">
-                <table cellpadding="5px" cellspacing="0" border="0">
-                    <tr style="vertical-align: middle;">
-                        <td><textarea
-                                style="width: 600px; height: 50px; overflow: auto; vertical-align: middle;"
-                                id="txtMessage" name="txtMessage"></textarea>
-                        </td>
-                        <td style="width: 6px"></td>
-                        <td style="vertical-align: middle;">
-                            <a id="btnSend" href="javascript:void(0)"
-                               class="easyui-linkbutton c3" data-options="size:'large'">发送</a>
+<!-- main content start-->
+<div class="main-content" >
+
+    <!--引入抽取的右侧上部页面-->
+    <div th:replace="common/commonLeft::#RightTop"></div>
+
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+            <p>
+                帐号：<input type="text" id="linkAgent" class="easyui-textbox" style="width: 150px"/>
+                昵称：<input type="text" id="nickname" class="easyui-textbox" style="width: 150px"/>
+                发送给：<input type="text" id="toAgent" class="easyui-textbox" style="width: 150px"/>
+                <a id="btnLink" href="javascript:void(0)" class="easyui-linkbutton c1">开始聊天</a></p>
+            <div data-options="region:'center'" class="easyui-panel" style="width: 90%;height:500px;  padding: 10px;"
+                 id="chatRecord">
+                <ul class="chatDialog-main clearfix" id="chatZone">
+
+
+                </ul>
+            </div>
+            <div class="easyui-panel" style="width: 90%; padding: 10px;">
+                <table height="100%" cellpadding="0px" cellspacing="0px">
+                    <tr>
+                        <td height="100px">
+                            <table cellpadding="5px" cellspacing="0" border="0">
+                                <tr style="vertical-align: middle;">
+                                    <td><textarea
+                                            style="width: 600px; height: 50px; overflow: auto; vertical-align: middle;"
+                                            id="txtMessage" name="txtMessage"></textarea>
+                                    </td>
+                                    <td style="width: 6px"></td>
+                                    <td style="vertical-align: middle;">
+                                        <a id="btnSend" href="javascript:void(0)"
+                                           class="easyui-linkbutton c3" data-options="size:'large'">发送</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
+            </div>
+    </div>
 </div>
 
 </body>

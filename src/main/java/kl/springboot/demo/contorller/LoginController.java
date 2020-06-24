@@ -4,6 +4,7 @@ package kl.springboot.demo.contorller;
 import kl.springboot.demo.dao.SysuserMapper;
 import kl.springboot.demo.entity.Sysuser;
 import kl.springboot.demo.entity.SysuserExample;
+import kl.springboot.demo.utils.MD5;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,7 @@ public class LoginController {
     @Autowired
     SysuserMapper sysUserMapper;
     @RequestMapping("/Login.do")
-    public String userlist(@RequestParam("username") String username, @RequestParam("password") String password, Map<String, Object> map, HttpSession session) {
+    public String userlist(@RequestParam("username") String username, @RequestParam("password") String password, Map<String, Object> map, HttpSession session) throws Exception {
 
         SysuserExample example=new SysuserExample();
         SysuserExample.Criteria criteria = example.createCriteria();
@@ -45,21 +46,20 @@ public class LoginController {
          * setOrderByClause("age asc");//升序
          * setDistinct(false);//不去重
          */
-        if(StringUtils.isNotBlank(username)){
-            criteria.andLoginNameEqualTo(username);
+        //username 与 password不为空
+        if(StringUtils.isNotBlank(username)  &&  StringUtils.isNotBlank(password)){
+            criteria.andLoginnameEqualTo(username);
+            List<Sysuser> usercheck = sysUserMapper.selectByExample(example);
+            if(usercheck.size()>0){
+                if(MD5.verify(password,usercheck.get(0).getPassword())){
+                    session.setAttribute("loginName", username);
+                    //  return "index";//首页
+                    return "redirect:/index.do";
+                }
+            }
         }
-        if(StringUtils.isNotBlank(password)){
-            criteria.andPasswordEqualTo(password);
-        }
-        List<Sysuser> collection = sysUserMapper.selectByExample(example);
-        if (collection.size()==1) {
-            session.setAttribute("loginName", username);
-          //  return "index";//首页
-            return "redirect:/index.do";
-        } else {
-            map.put("mes", "账号或密码错误!");
-            return "login";//登录
-        }
+        map.put("mes", "账号或密码错误!");
+        return "login";//登录
 
     }
 

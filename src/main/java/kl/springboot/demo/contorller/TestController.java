@@ -1,5 +1,6 @@
 package kl.springboot.demo.contorller;
 
+
 import kl.springboot.demo.entity.Sysuser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,14 +63,14 @@ public class TestController {
         if (hasKey) {
             Sysuser user = operations.get("username");
             System.out.println("==========从缓存中获得数据=========");
-            System.out.println(user.getUserName());
+            System.out.println(user.getUsername());
             System.out.println("==============================");
             return user;
         } else {
             Sysuser user=new Sysuser();
-            user.setUserName("张三");
+            user.setUsername("张三");
             System.out.println("==========从数据表中获得数据=========");
-            System.out.println(user.getUserName());
+            System.out.println(user.getUsername());
             System.out.println("==============================");
 
             // 写入缓存

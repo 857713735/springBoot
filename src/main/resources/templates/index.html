@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
@@ -7,11 +6,12 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../img/title.ico" type="image/png">
+
+    <link href="#" th:href="@{/img/title.ico}" type="image/x-icon" rel="icon">
     <title>Home</title>
 
     <!--Begin  Page Level  CSS -->
-    <link href="../assets/plugins/morris-chart/morris.css" rel="stylesheet">
+    <link href="../assets/plugins/morris-chart/morris.css"  rel="stylesheet">
     <link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
     <!--End  Page Level  CSS -->
     <link href="../assets/css/icons.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 </head>
 
 <body class="sticky-header">
-
+<!--首页-->
 <!--引入抽取的左侧页面-->
 <div th:replace="common/commonLeft::#leftmenu"></div>
 
