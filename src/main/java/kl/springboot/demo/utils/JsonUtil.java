@@ -6,7 +6,7 @@ public class JsonUtil implements Serializable {
     private static final long serialVersionUID = 3850015655927422933L;
     private String status;
     private String message;
-    private Object rows;
+    private Object data;
 
     public JsonUtil() {
     }
@@ -32,25 +32,25 @@ public class JsonUtil implements Serializable {
         this.message = message;
     }
 
-    public JsonUtil(String status, String message, Object rows) {
+    public JsonUtil(String status, String message, Object data) {
         this.status = status;
         this.message = message;
-        setRows(rows);
+        setData(data);
     }
 
-    public Object getRows() {
-        return rows;
+    public Object getData() {
+        return data;
     }
 
-    public void setRows(Object rows) {
+    public void setData(Object data) {
         try {
-            if(rows instanceof String){
-                this.rows=JSON.parse((String)rows);
+            if(data instanceof String){
+                this.data=JSON.parse((String)data);
             }else{
-                this.rows = rows;
+                this.data = data;
             }
         } catch (Exception e) {
-            this.rows = rows;
+            this.data = data;
 
         }
     }

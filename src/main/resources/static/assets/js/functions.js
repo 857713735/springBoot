@@ -17,19 +17,19 @@
 
     // Toggle Left Menu
    jQuery('.menu-list > a').click(function() {
-      
+
       var parent = jQuery(this).parent();
       var sub = parent.find('> ul');
       
       if(!jQuery('body').hasClass('left-side-collapsed')) {
          if(sub.is(':visible')) {
-            sub.slideUp(200, function(){
+            sub.slideUp(200, function(){alert(1);
                parent.removeClass('nav-active');
                jQuery('.main-content').css({height: ''});
                mainContentHeightAdjust();
             });
          } else {
-            visibleSubMenuClose();
+            visibleSubMenuClose();alert(2);
             parent.addClass('nav-active');
             sub.slideDown(200, function(){
                 mainContentHeightAdjust();
@@ -42,8 +42,8 @@
    function visibleSubMenuClose() {
       jQuery('.menu-list').each(function() {
          var t = jQuery(this);
-         if(t.hasClass('nav-active')) {
-            t.find('> ul').slideUp(200, function(){
+         if(t.hasClass('nav-active')) {alert(3);
+            t.find('> ul').slideUp(200, function(){alert(5);
                t.removeClass('nav-active');
             });
          }
@@ -83,7 +83,7 @@
 
             jQuery(this).addClass('menu-collapsed');
 
-         } else {
+         } else {alert(4);
             body.removeClass('left-side-collapsed chat-view');
             jQuery('.custom-nav li.active ul').css({display: 'block'});
 
@@ -178,3 +178,5 @@ $(document).ready(function () {
 		setHeight();
 	});
 });
+
+
